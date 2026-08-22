@@ -20,14 +20,17 @@ class RltmService {
     }
   }
 
-  Stream<List<Item>>? getItems() {
-    instance.ref().onValue.listen((event) {
+  Stream<List<Item>> getItemsRealtime() {
+    return instance.ref('items').onValue.map((event) {
       final snapshot = event.snapshot;
       if (snapshot.exists) {
         return snapshot.children.map((element) {
-          return Item.fromMap(element.value!);
+          final Map<String, dynamic> valueMap =
+              element.value as Map<String, dynamic>;
+          return Item.fromMap(valueMap);
         }).toList();
       }
+      return [];
     });
   }
 }
