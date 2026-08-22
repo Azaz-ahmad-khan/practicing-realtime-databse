@@ -58,12 +58,16 @@ class AddItemViewModel extends ChangeNotifier {
   }
 
   Future<void> addItems(Item item) async {
+    _isLoading = true;
+    notifyListeners();
     try {
       await rltmService.addPost(item);
     } catch (e) {
       errorMessage = e.toString();
       notifyListeners();
-   
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 

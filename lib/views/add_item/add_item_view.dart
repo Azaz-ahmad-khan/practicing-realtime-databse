@@ -167,6 +167,7 @@ class _AddItemViewState extends State<AddItemView> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('item: ${item!.name} added')),
                       );
+                      viewModel.reset();
                       Navigator.pop(context);
                     }
                   },
