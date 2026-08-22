@@ -15,7 +15,7 @@ class Item {
     return Item(
       name: map['name'],
       quantity: map['quantity'],
-      addedAt: map['addedAt'],
+      addedAt: DateTime.parse(map['addedAt'] as String),
       isbought: map['isbought'],
     );
   }
@@ -24,7 +24,7 @@ class Item {
       'id': id,
       'name': name,
       'quantity': quantity,
-      'addedAt': addedAt,
+      'addedAt': addedAt.toIso8601String(),
       'isbought': isbought,
     };
   }

@@ -16,7 +16,7 @@ class RltmService {
     } on FirebaseException catch (e) {
       throw Exception('Error : $e');
     } catch (e) {
-      return '';
+      throw Exception(e.toString());
     }
   }
 
