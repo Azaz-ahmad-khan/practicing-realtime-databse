@@ -103,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                 IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
                   onPressed: () {
-                    // TODO: Implement Delete
+                    viewModel.deleteItem(item.id!);
                   },
                 ),
               ],

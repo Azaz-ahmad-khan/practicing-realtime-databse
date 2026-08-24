@@ -5,7 +5,7 @@ import 'package:reltm_crud/service/rltm_service.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final RltmService _rltmService = RltmService();
-  
+
   List<Item> _items = [];
   List<Item> get items => _items;
 
@@ -38,6 +38,16 @@ class HomeViewModel extends ChangeNotifier {
         notifyListeners();
       },
     );
+  }
+
+  Future<void> deleteItem(String id) async {
+    try {
+      await _rltmService.deleteItem(id);
+      notifyListeners();
+    } catch (e) {
+      _error = e.toString();
+      notifyListeners();
+    }
   }
 
   @override

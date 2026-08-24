@@ -34,4 +34,12 @@ class RltmService {
       return [];
     });
   }
+
+  Future<void> deleteItem(String id) async {
+    try {
+      await instance.ref('items').child(id).remove();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }
