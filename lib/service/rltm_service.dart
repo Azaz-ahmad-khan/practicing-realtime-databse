@@ -25,8 +25,9 @@ class RltmService {
       final snapshot = event.snapshot;
       if (snapshot.exists) {
         return snapshot.children.map((element) {
-          final Map<String, dynamic> valueMap =
-              element.value as Map<String, dynamic>;
+          final Map<String, dynamic> valueMap = Map<String, dynamic>.from(
+            element.value as Map,
+          );
           return Item.fromMap(valueMap);
         }).toList();
       }

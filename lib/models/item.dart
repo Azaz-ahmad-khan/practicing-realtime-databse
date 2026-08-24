@@ -13,6 +13,7 @@ class Item {
   });
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
+      id: map['id'] as String?,
       name: map['name'],
       quantity: map['quantity'],
       addedAt: DateTime.parse(map['addedAt'] as String),
